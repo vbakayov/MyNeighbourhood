@@ -45,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
         pager.setAdapter(adapter);
 
-        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
-                .getDisplayMetrics());
+        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
         pager.setPageMargin(pageMargin);
-
         tabs.setViewPager(pager);
+
+        pager.setCurrentItem(0);
+        tabs.setBackgroundColor(getResources().getColor(R.color.green));
+        tabs.setIndicatorColor(R.color.tabsScrollColor);
+        tabs.setTextColor(getResources().getColor(R.color.text_shadow_white));
     }
 
     @Override
