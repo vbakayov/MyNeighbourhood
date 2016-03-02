@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/mainTab1"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Viktor"
+        android:id="@+id/mUsername"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="45dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/mProfileImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/myphoto" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mRating"
+        android:layout_below="@+id/mUsername"
+        android:layout_alignLeft="@id/mProfileImage"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is a message"
+        android:id="@+id/mUserMessage"
+        android:layout_below="@+id/mProfileImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Active Posts"
+        android:id="@+id/mActivePosts"
+        android:layout_below="@+id/mUserMessage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="History Posts"
+        android:id="@+id/mHistoryPosts"
+        android:layout_below="@+id/mPostList"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:id="@+id/mPostList"
+        android:layout_below="@+id/mActivePosts"
+        android:layout_alignLeft="@+id/mUserMessage"
+        android:layout_alignStart="@+id/mUserMessage" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/mHistoryPostList"
+        android:layout_below="@+id/mHistoryPosts"
+        android:layout_alignLeft="@+id/mPostList"
+        android:layout_alignStart="@+id/mPostList" />
+
+</RelativeLayout>

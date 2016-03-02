@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Text"
+        android:id="@+id/mPostText"
+        android:layout_margin="10dp"
+        android:maxWidth="250dp"
+        android:layout_gravity="left" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/mEditIcon"
+        android:src="@drawable/edit"
+        android:clickable="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_column="1" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/mDeleteIcon"
+        android:src="@drawable/delete"
+        android:clickable="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="1dp"
+        android:layout_column="2" />
+
+</GridLayout>

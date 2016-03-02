@@ -1,6 +1,9 @@
 package com.example.viktor.myneighbourhood;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -28,7 +31,7 @@ import slidingmenu.FindPeopleFragment;
 import slidingmenu.NavDrawerItem;
 import slidingmenu.PagesFragment;
 import slidingmenu.PhotosFragment;
-import slidingmenu.WhatsHotFragment;
+import slidingmenu.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
 
         // Initialize the ViewPager and set an adapter
@@ -94,18 +106,16 @@ public class MainActivity extends AppCompatActivity {
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
         // adding nav drawer items to array
-        // HomeFragment
+        // Profile
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find People
+        // My Posts
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Photos
+        // My Hood
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // Communities, Will add a counter here
+        // Settigs
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-        // Pages
+        // About
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
 
 
         // Recycle the typed array
@@ -138,16 +148,14 @@ public class MainActivity extends AppCompatActivity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null) {
-            // on first time display view for first nav item
-            displayView(0);
-        }
         pager.setAdapter(adapter);
         pager.setCurrentItem(1);
        // tabs.setViewPager(pager);
        tabs.setTextSize(1, 20);
         tabs.setDrawFullUnderline(true);
-        tabs.setTabIndicatorColorResource( R.color.tabsScrollColor);
+        tabs.setTabIndicatorColorResource(R.color.tabsScrollColor);
+
+        populatePostView();
 
     }
 
@@ -246,7 +254,10 @@ public class MainActivity extends AppCompatActivity {
         android.app.Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new slidingmenu.HomeFragment();
+                Log.d("TEST","CLicked Postion 0");
+                Intent myIntent = new Intent(this, ProfileFragment.class);
+                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
+                this.startActivity(myIntent);
                 break;
             case 1:
                 fragment = new FindPeopleFragment();
@@ -260,18 +271,17 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 fragment = new PagesFragment();
                 break;
-            case 5:
-                fragment = new WhatsHotFragment();
-                break;
 
             default:
                 break;
         }
 
         if (fragment != null) {
-            android.app.FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.pager, fragment).commit();
+//            FragmentManager fragmentManager = getFragmentManager();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.pager, fragment).commit();
+
+
 
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
@@ -307,5 +317,11 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    private void populatePostView() {
+        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner"));
+        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner"));
     }
 }

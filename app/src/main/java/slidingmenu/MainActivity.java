@@ -58,7 +58,7 @@
 //		navDrawerItems = new ArrayList<NavDrawerItem>();
 //
 //		// adding nav drawer items to array
-//		// HomeFragment
+//		// ProfileFragment
 //		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
 //		// Find People
 //		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
@@ -164,7 +164,7 @@
 //		Fragment fragment = null;
 //		switch (position) {
 //		case 0:
-//			fragment = new HomeFragment();
+//			fragment = new ProfileFragment();
 //			break;
 //		case 1:
 //			fragment = new FindPeopleFragment();
