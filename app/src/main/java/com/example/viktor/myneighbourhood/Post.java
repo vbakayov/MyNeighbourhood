@@ -1,5 +1,7 @@
 package com.example.viktor.myneighbourhood;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by Viktor on 3/1/2016.
  */
@@ -9,13 +11,22 @@ public class Post {
     private String pictureSource1;
     private String pictureSource2;
     private String Owner;
+    private Boolean posttoMyHood;
+    private Boolean postToCurrentHood;
+    private String homeAddress;
 
-    public Post(String title, String description, String pictureSource1, String pictureSource2, String owner) {
+    private String currentAdress;
+
+    public Post(String title, String description, String pictureSource1, String pictureSource2, String owner, Boolean posttoMyHood,Boolean postToCurrentHood,String homeAddress,String currentAdress) {
         this.title = title;
         this.description = description;
         this.pictureSource1 = pictureSource1;
         this.pictureSource2 = pictureSource2;
-        Owner = owner;
+        this. Owner = owner;
+        this.posttoMyHood = posttoMyHood;
+        this.postToCurrentHood = postToCurrentHood;
+        this.homeAddress = homeAddress;
+        this.currentAdress = currentAdress;
     }
 
     public String getDescription() {
@@ -24,6 +35,14 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCurrentAdress() {
+        return currentAdress;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
     }
 
     public String getTitle() {
@@ -40,6 +59,14 @@ public class Post {
 
     public void setOwner(String owner) {
         Owner = owner;
+    }
+
+    public Boolean getPosttoMyHood() {
+        return posttoMyHood;
+    }
+
+    public Boolean getPostToCurrentHood() {
+        return postToCurrentHood;
     }
 
     public String getPictureSource2() {

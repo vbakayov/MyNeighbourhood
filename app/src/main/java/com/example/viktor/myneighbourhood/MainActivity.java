@@ -334,7 +334,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void populatePostView() {
-        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner"));
-        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner"));
+        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner",true,false,"\n" +
+                "611 Maryhill Rd\n" +
+                "Glasgow, Glasgow City G20 7TY", " "));
+        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner",true,false,"Firhill Ct, Glasgow G20 7BB", " "));
     }
 }

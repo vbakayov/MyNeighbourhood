@@ -31,6 +31,11 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_my_neighbourhood">Map</string>
+
     <string name="title_activity_settings"> Settings</string>
     <string name="title_activity_current_neighbourhood"> Current Neighbourhood</string>
+
+    <string name="chk_description">my Hood</string>
+    <string name="chk_myHood">my Hood</string>
+    <string name="chk_currentHood">this Hood</string>
 </resources>
