@@ -3,7 +3,6 @@ package com.example.viktor.myneighbourhood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -30,7 +29,6 @@ import slidingmenu.CommunityFragment;
 import slidingmenu.FindPeopleFragment;
 import slidingmenu.NavDrawerItem;
 import slidingmenu.PagesFragment;
-import slidingmenu.PhotosFragment;
 import slidingmenu.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,15 +61,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
         // Initialize the ViewPager and set an adapter
@@ -157,6 +146,20 @@ public class MainActivity extends AppCompatActivity {
 
         populatePostView();
 
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myIntent = new Intent(getBaseContext(), NewPostActivity.class);
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(myIntent);
+                ;
+            }
+        });
+
+
     }
 
     @Override
@@ -213,7 +216,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
                                 long id) {
-            // display view for selected nav drawer item
             displayView(position);
         }
     }
@@ -256,19 +258,30 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 Log.d("TEST","CLicked Postion 0");
                 Intent myIntent = new Intent(this, ProfileFragment.class);
+
                 //myIntent.putExtra("filtered", list); //pass the filted array with the trips
                 this.startActivity(myIntent);
                 break;
             case 1:
                 fragment = new FindPeopleFragment();
                 break;
+
             case 2:
-                fragment = new PhotosFragment();
+                Intent myIntent2 = new Intent(this, MyNeighbourhoodActivity.class);
+                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
+                this.startActivity(myIntent2);
                 break;
             case 3:
-                fragment = new CommunityFragment();
+                Intent myIntent3 = new Intent(this, myCurrentLocationActivity.class);
+                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
+                this.startActivity(myIntent3);
                 break;
             case 4:
+                Intent myIntent4 = new Intent(this, SettingsActivity.class);
+                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
+                this.startActivity(myIntent4);
+                break;
+            case 5:
                 fragment = new PagesFragment();
                 break;
 
