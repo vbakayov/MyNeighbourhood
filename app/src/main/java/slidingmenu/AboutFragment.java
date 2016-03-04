@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 
 import com.example.viktor.myneighbourhood.R;
 
-public class PagesFragment extends Fragment {
+public class AboutFragment extends Fragment {
 	
-	public PagesFragment(){}
+	public AboutFragment(){}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -176,7 +176,7 @@
 //			fragment = new CommunityFragment();
 //			break;
 //		case 4:
-//			fragment = new PagesFragment();
+//			fragment = new AboutFragment();
 //			break;
 //		case 5:
 //			fragment = new WhatsHotFragment();

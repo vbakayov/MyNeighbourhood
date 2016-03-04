@@ -30,6 +30,7 @@ public class NewPostActivity extends AppCompatActivity {
     EditText descriptiopn,title;
     CheckBox myhood, currentHood;
     private ImageView imagePost;
+    private ImageView imagePost2;
     private String picturePath=null;
     private String picturePath2 = null;
     // Storage Permissions
@@ -40,7 +41,6 @@ public class NewPostActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    private ImageView imagePost2;
 
 
     @Override
@@ -84,9 +84,9 @@ public class NewPostActivity extends AppCompatActivity {
             {
                 public void onClick(View view)
                 {
+
                     Log.v("EditText", descriptiopn.getText().toString());
                     Log.v("EditTextTitle", title.getText().toString());
-
                     Log.v("CheckBoxmyHood", Boolean.toString(myhood.isChecked()));
                     Log.v("CheckBoxcurrentHood", Boolean.toString(currentHood.isChecked()));
 
@@ -94,7 +94,7 @@ public class NewPostActivity extends AppCompatActivity {
                     SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                     String homeAdress = settings.getString("homeAddress", "Glasgow");
                     String currentAdress = "";
-                    Log.d("Address from map", homeAdress);
+
                     if(!descriptiopn.getText().toString().equals("") && !title.getText().toString().equals(""))
                     {
                         //add the post to the central storage
@@ -103,6 +103,7 @@ public class NewPostActivity extends AppCompatActivity {
                         //clear the fields
                         descriptiopn.setText("");
                         title.setText("");
+                        //show the dialog
                         showAlertDialog("Post Successful", "Your posting has been succesfull", true);
                     }else{
                         showAlertDialog("Post Unsuccesful", "Please fill in all the details", false);

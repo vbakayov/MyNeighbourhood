@@ -1,5 +1,6 @@
 package com.example.viktor.myneighbourhood;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
@@ -7,12 +8,15 @@ import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
@@ -25,10 +29,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     public static final String PREFS_NAME = "Settings";
+    private Marker homeMarker;
+    // Since we are consuming the event this is necessary to
+// manage closing opened markers before opening new ones
+    Marker lastOpened = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +52,7 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -56,13 +63,20 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         // Reading from SharedPreferences
-        String value = settings.getString("homeAddress", "Glasgow");
+        String value = settings.getString("homeAddress", "19 Murano Place, G20 7AD, Glasgow");
         Log.d("Address from map", value);
         // Add a marker in homelocaton and move the camera
         LatLng homelocatoin = getLatLongFromPlace(value);
-        mMap.addMarker(new MarkerOptions().position(homelocatoin).title("Marker in Sydney"));
+        MarkerOptions marker= new MarkerOptions().position(homelocatoin).title("You are Here");
+        marker.snippet("This is your home address");
+        // Changing marker icon
+        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.googlemapmarker));
+
+        homeMarker = mMap.addMarker(marker);
+        homeMarker.showInfoWindow();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homelocatoin, 15.0f));
         setUpMarkersFromPost();
+        mMap.setOnMarkerClickListener(this);
     }
 
     private void setUpMarkersFromPost() {
@@ -71,7 +85,8 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
         for(int post=0; post< allPosts.size(); post++){
            Post currentPost = allPosts.get(post);
             LatLng position = getLatLongFromPlace(currentPost.getHomeAddress());
-            mMap.addMarker(new MarkerOptions().position(position).title(currentPost.getTitle()));
+             mMap.addMarker(new MarkerOptions().position(position).title(currentPost.getTitle()));
+            ;
         }
 
     }
@@ -190,5 +205,45 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
 
             }
         }
+
+
     }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        // Check if there is an open info window
+        if (lastOpened != null) {
+            // Close the info window
+            lastOpened.hideInfoWindow();
+
+            // Is the marker the same marker that was already open
+            if (lastOpened.equals(marker)) {
+                // Nullify the lastOpened object
+
+                if(!lastOpened.equals(homeMarker)) {
+                    Intent openDetailIntent = new Intent(getBaseContext(), ShowPostActivity.class);
+                    openDetailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    openDetailIntent.putExtra("title", marker.getTitle());
+                    getBaseContext().startActivity(openDetailIntent);
+                    lastOpened = null;
+                }
+                // Return so that the info window isn't opened again
+                lastOpened = null;
+                return true;
+            }
+        }
+
+        // Open the info window for the marker
+        marker.showInfoWindow();
+        // Re-assign the last opened such that we can close it later
+        lastOpened = marker;
+
+        // Event was handled by our code do not launch default behaviour.
+        return true;
+    }
+
+
+
+
 }

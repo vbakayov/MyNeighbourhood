@@ -25,9 +25,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import adapter.NavDrawerListAdapter;
-import slidingmenu.FindPeopleFragment;
 import slidingmenu.NavDrawerItem;
-import slidingmenu.PagesFragment;
+import slidingmenu.AboutFragment;
 import slidingmenu.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter2;
+    private Profile myProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
                 this.startActivity(myIntent4);
                 break;
             case 4:
-                fragment = new PagesFragment();
+                fragment = new AboutFragment();
                 break;
 
             default:
@@ -280,11 +280,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (fragment != null) {
-//            FragmentManager fragmentManager = getFragmentManager();
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.pager, fragment).commit();
-
-
 
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
@@ -323,10 +318,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //meyhod to populate the info to the storage
     private void populatePostView() {
-        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner",true,false,"\n" +
+       Profile myProfile=  Profile.getInstance();
+        myProfile.setName("Viktor");
+        myProfile.setName("4.2");
+        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner", true, false, "\n" +
                 "611 Maryhill Rd\n" +
                 "Glasgow, Glasgow City G20 7TY", " ", null, null));
-        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner",true,false,"Firhill Ct, Glasgow G20 7BB", " ", null, null));
+        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner", true, false, "Firhill Ct, Glasgow G20 7BB", " ", null, null));
+        PostStorage.addPost(new Post("Second Year Economics book needed ", "Hi there, I am looking for a book called principles of economics by Greg Mankin", "picturesrc1", "picturesrc2", "owner",true,false,"570 Maryhill Riad, Glasgow", " ", null, null));
+        PostStorage.addPost(new Post("Big Dinner Table Needed", "For my dining room I am looking for a black minimum 6 placed dinner table", "picturesrc1", "picturesrc2", "owner",true,false,"\n" +
+                "84 Murano St\n" +
+                "Glasgow", " ", null, null));
+        myProfile.setPosts(PostStorage.getInstance().getPosts());
     }
 }
