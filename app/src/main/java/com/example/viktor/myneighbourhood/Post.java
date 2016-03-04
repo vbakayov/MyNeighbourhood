@@ -14,10 +14,12 @@ public class Post {
     private Boolean posttoMyHood;
     private Boolean postToCurrentHood;
     private String homeAddress;
-
+    private String picturePath;
+    private String picturePath2;
     private String currentAdress;
 
-    public Post(String title, String description, String pictureSource1, String pictureSource2, String owner, Boolean posttoMyHood,Boolean postToCurrentHood,String homeAddress,String currentAdress) {
+    public Post(String title, String description, String pictureSource1, String pictureSource2, String owner, Boolean posttoMyHood,
+                Boolean postToCurrentHood, String homeAddress, String currentAdress, String picturePath, String picturePath2) {
         this.title = title;
         this.description = description;
         this.pictureSource1 = pictureSource1;
@@ -27,6 +29,8 @@ public class Post {
         this.postToCurrentHood = postToCurrentHood;
         this.homeAddress = homeAddress;
         this.currentAdress = currentAdress;
+        this.picturePath = picturePath;
+        this.picturePath2 = picturePath2;
     }
 
     public String getDescription() {
@@ -80,6 +84,17 @@ public class Post {
     public String getPictureSource1() {
         return pictureSource1;
     }
+
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+
+    public String getPicturePath2() {
+        return picturePath2;
+    }
+
 
     public void setPictureSource1(String pictureSource1) {
         this.pictureSource1 = pictureSource1;

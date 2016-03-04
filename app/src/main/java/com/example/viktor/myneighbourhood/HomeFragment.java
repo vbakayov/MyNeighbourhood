@@ -1,12 +1,14 @@
 package com.example.viktor.myneighbourhood;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +65,13 @@ public class HomeFragment extends Fragment {
         initCards();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("Resumerd","CAlled");
+        initCards();
+    }
+
 
 
 
@@ -73,18 +82,6 @@ public class HomeFragment extends Fragment {
         PostStorage storage= PostStorage.getInstance();
          ArrayList<Post> posts= storage.getPosts();
         for (int i = 0 ; i< posts.size();i++){
-//            Card card = init_standard_header_with_expandcollapse_button_custom_area(posts.get(i).getTitle(),posts.get(i).getDescription());
-//            //Add Thumbnail
-//            Thumb thumbnail = new Thumb(getContext());
-//            float density = getContext().getResources().getDisplayMetrics().density;
-//            int size= (int)(125*density);
-//            thumbnail.setUrlResource("https://lh5.googleusercontent.com/-squZd7FxR8Q/UyN5UrsfkqI/AAAAAAAAbAo/VoDHSYAhC_E/s"+size+"/new%2520profile%2520%25282%2529.jpg");
-//          //  thumbnail.setDrawableResource(R.drawable.ic_pages);
-//
-//            //thumbnail.setErrorResource(R.drawable.ic_ic_error_loading);
-//            card.addCardThumbnail(thumbnail);
-//
-//            cards.add(card);
             //Create a Card
             Card card = init_standard_header_with_expandcollapse_button_custom_area(posts.get(i).getTitle(),posts.get(i).getDescription());
             cards.add(card);
@@ -129,7 +126,7 @@ public class HomeFragment extends Fragment {
         CardThumbnail thumb = new CardThumbnail(getActivity());
 
         //Set ID resource
-        thumb.setDrawableResource(R.drawable.ic_pages);
+       // thumb.setDrawableResource(R.drawable.ic_pages);
 
         //Add thumbnail to a card
         card.addCardThumbnail(thumb);
@@ -161,6 +158,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(Card card, View view) {
                 Toast.makeText(getContext(), "Click Listener card=" + card.getCardHeader().getTitle(), Toast.LENGTH_SHORT).show();
+                //Open more detailed Activity
+                Intent openDetailIntent = new Intent(getActivity(), ShowPostActivity.class);
+                openDetailIntent.putExtra("title", card.getCardHeader().getTitle());
+                getActivity().startActivity(openDetailIntent);
+
             }
         });
 

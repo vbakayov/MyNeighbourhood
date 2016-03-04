@@ -25,7 +25,6 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import adapter.NavDrawerListAdapter;
-import slidingmenu.CommunityFragment;
 import slidingmenu.FindPeopleFragment;
 import slidingmenu.NavDrawerItem;
 import slidingmenu.PagesFragment;
@@ -97,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
         // adding nav drawer items to array
         // Profile
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // My Posts
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // My Hood
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1), true, "22"));
+        // My Location
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1), true, "14"));
         // Settigs
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // About
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
@@ -258,30 +257,21 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 Log.d("TEST","CLicked Postion 0");
                 Intent myIntent = new Intent(this, ProfileFragment.class);
-
-                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
                 this.startActivity(myIntent);
                 break;
             case 1:
-                fragment = new FindPeopleFragment();
-                break;
-
-            case 2:
                 Intent myIntent2 = new Intent(this, MyNeighbourhoodActivity.class);
-                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
                 this.startActivity(myIntent2);
                 break;
-            case 3:
+            case 2:
                 Intent myIntent3 = new Intent(this, myCurrentLocationActivity.class);
-                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
                 this.startActivity(myIntent3);
                 break;
-            case 4:
+            case 3:
                 Intent myIntent4 = new Intent(this, SettingsActivity.class);
-                //myIntent.putExtra("filtered", list); //pass the filted array with the trips
                 this.startActivity(myIntent4);
                 break;
-            case 5:
+            case 4:
                 fragment = new PagesFragment();
                 break;
 
@@ -336,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
     private void populatePostView() {
         PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner",true,false,"\n" +
                 "611 Maryhill Rd\n" +
-                "Glasgow, Glasgow City G20 7TY", " "));
-        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner",true,false,"Firhill Ct, Glasgow G20 7BB", " "));
+                "Glasgow, Glasgow City G20 7TY", " ", null, null));
+        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner",true,false,"Firhill Ct, Glasgow G20 7BB", " ", null, null));
     }
 }

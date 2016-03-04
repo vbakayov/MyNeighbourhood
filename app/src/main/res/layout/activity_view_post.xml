@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:float="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+        android:textSize="20dp"
+            android:hint="Title"
+        android:layout_below="@+id/txtLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:id="@+id/PostButton"
+        android:text="Request Details"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:layout_below="@+id/imgAdd"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/txtLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="Title"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/titleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="Description"
+        android:textStyle="bold"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/editDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:editable="true"
+        android:enabled="true"
+        android:textSize="20dp"
+        android:minLines="4"
+        android:maxLines="4"
+        android:isScrollContainer="true"
+        android:focusable="true"
+        android:hint="Description"
+        android:layout_below="@+id/titleDescription"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imgAdd"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/image_missing"
+        android:layout_weight="1"
+        android:layout_below="@+id/editDescription"
+        android:layout_toRightOf="@+id/titleDescription"
+        android:layout_toEndOf="@+id/titleDescription" />
+
+
+    <ImageView
+        android:id="@+id/imgAdd2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/image_missing"
+        android:layout_weight="1"
+        android:layout_below="@+id/editDescription"
+        android:layout_toLeftOf="@+id/titleDescription"
+        android:layout_toStartOf="@+id/titleDescription" />
+</RelativeLayout>
