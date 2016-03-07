@@ -17,11 +17,14 @@ public class Post {
     private String picturePath;
     private String picturePath2;
     private String currentAdress;
+    //either offer or wanted
+    private String type;
 
-    public Post(String title, String description, String pictureSource1, String pictureSource2, String owner, Boolean posttoMyHood,
+    public Post(String title, String type,String description, String pictureSource1, String pictureSource2, String owner, Boolean posttoMyHood,
                 Boolean postToCurrentHood, String homeAddress, String currentAdress, String picturePath, String picturePath2) {
         this.title = title;
         this.description = description;
+        this.type = type;
         this.pictureSource1 = pictureSource1;
         this.pictureSource2 = pictureSource2;
         this. Owner = owner;
@@ -94,6 +97,15 @@ public class Post {
     public String getPicturePath2() {
         return picturePath2;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
 
     public void setPictureSource1(String pictureSource1) {

@@ -13,7 +13,7 @@ import com.example.viktor.myneighbourhood.R;
 import java.util.ArrayList;
 
 /**
- * Created by Nikolay on 18/11/2015.
+ * Created by Viktor on 4/1/2016.
  */
 public class CustomListViewAdapter extends ArrayAdapter<String> {
 

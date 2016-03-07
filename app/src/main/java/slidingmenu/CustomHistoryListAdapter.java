@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.viktor.myneighbourhood.R;
 
 /**
- * Created by Nikolay on 18/11/2015.
+ * Created by Viktor on 4/1/2016.
  */
 public class CustomHistoryListAdapter extends ArrayAdapter<String> {
 

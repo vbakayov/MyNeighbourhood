@@ -21,6 +21,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 /**
  * Created by Viktor on 3/2/2016.
@@ -33,6 +35,7 @@ public class NewPostActivity extends AppCompatActivity {
     private ImageView imagePost2;
     private String picturePath=null;
     private String picturePath2 = null;
+    private RadioGroup radioTypeGroup;
     // Storage Permissions
     public static final String PREFS_NAME = "Settings";
     private static int RESULT_LOAD_IMAGE = 1;
@@ -41,6 +44,7 @@ public class NewPostActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private RadioButton radioTypeButton;
 
 
     @Override
@@ -57,6 +61,7 @@ public class NewPostActivity extends AppCompatActivity {
         currentHood = (CheckBox) findViewById(R.id.chk_thisHood);
         imagePost = (ImageView) findViewById(R.id.imgAdd);
         imagePost2 =  (ImageView) findViewById(R.id.imgAdd2);
+        radioTypeGroup = (RadioGroup) findViewById(R.id.radioType);
 
         imagePost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +102,12 @@ public class NewPostActivity extends AppCompatActivity {
 
                     if(!descriptiopn.getText().toString().equals("") && !title.getText().toString().equals(""))
                     {
+                        // get selected radio button from radioGroup
+                        int selectedId = radioTypeGroup.getCheckedRadioButtonId();
+                        // find the radiobutton by returned id
+                        radioTypeButton = (RadioButton) findViewById(selectedId);
                         //add the post to the central storage
-                        PostStorage.addPost(new Post(title.getText().toString(), descriptiopn.getText().toString(), "" +
+                        PostStorage.addPost(new Post(title.getText().toString(),radioTypeButton.getText().toString(), descriptiopn.getText().toString(), "" +
                                 "pictureSource", null, null, myhood.isChecked(), currentHood.isChecked(), homeAdress, currentAdress, picturePath,picturePath2));
                         //clear the fields
                         descriptiopn.setText("");

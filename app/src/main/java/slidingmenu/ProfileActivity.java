@@ -23,13 +23,12 @@ import com.example.viktor.myneighbourhood.ShowPostActivity;
 
 import java.util.ArrayList;
 
-public class ProfileFragment extends AppCompatActivity implements CallBackEditPostPostion {
+public class ProfileActivity extends AppCompatActivity implements CallBackEditPostPostion {
     private static final String TAG = "Profile Tab";
 
     private ArrayList<String> posts;
     private ViewGroup container;
     private ListView mPostList;
-    private int deleteoffset;
 
 
     @Override
@@ -40,16 +39,9 @@ public class ProfileFragment extends AppCompatActivity implements CallBackEditPo
             String[] history = {"Car Repair Needed", "Sink Fix Please"};
 
             posts = new ArrayList<>();
-            deleteoffset=0;
-
-
-
             setContentView(R.layout.fragment_profile);
-
-
             Profile profile = Profile.getInstance();
-
-
+            
             ArrayList<Post> myPosts = profile.getPosts();
 
             for (int i = 0 ; i<myPosts.size(); i++ ){

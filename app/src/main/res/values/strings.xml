@@ -20,7 +20,7 @@
     <array name="nav_drawer_icons">
         <item>@drawable/ic_profile</item>
         <item>@drawable/ic_neighbourhood</item>
-        <item>@drawable/ic_neighbourhood</item>
+        <item>@drawable/location</item>
         <item>@drawable/ic_setting</item>
         <item>@drawable/ic_about</item>
 

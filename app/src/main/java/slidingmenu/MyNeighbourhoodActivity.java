@@ -1,4 +1,4 @@
-package com.example.viktor.myneighbourhood;
+package slidingmenu;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,9 +7,11 @@ import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
+import com.example.viktor.myneighbourhood.Post;
+import com.example.viktor.myneighbourhood.PostStorage;
+import com.example.viktor.myneighbourhood.R;
+import com.example.viktor.myneighbourhood.ShowPostActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -30,12 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
-
     private GoogleMap mMap;
     public static final String PREFS_NAME = "Settings";
     private Marker homeMarker;
     // Since we are consuming the event this is necessary to
-// manage closing opened markers before opening new ones
+    // manage closing opened markers before opening new ones
     Marker lastOpened = null;
 
     @Override
@@ -64,7 +65,6 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         // Reading from SharedPreferences
         String value = settings.getString("homeAddress", "19 Murano Place, G20 7AD, Glasgow");
-        Log.d("Address from map", value);
         // Add a marker in homelocaton and move the camera
         LatLng homelocatoin = getLatLongFromPlace(value);
         MarkerOptions marker= new MarkerOptions().position(homelocatoin).title("You are Here");
@@ -176,9 +176,6 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
                 JSONObject jsonObj = new JSONObject(result.toString());
                 JSONArray resultJsonArray = jsonObj.getJSONArray("results");
 
-                // Extract the Place descriptions from the results
-                // resultList = new ArrayList<String>(resultJsonArray.length());
-
                 JSONObject before_geometry_jsonObj = resultJsonArray
                         .getJSONObject(0);
 
@@ -238,7 +235,6 @@ public class MyNeighbourhoodActivity extends FragmentActivity implements OnMapRe
         marker.showInfoWindow();
         // Re-assign the last opened such that we can close it later
         lastOpened = marker;
-
         // Event was handled by our code do not launch default behaviour.
         return true;
     }

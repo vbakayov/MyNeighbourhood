@@ -69,8 +69,7 @@
         android:shadowDy="0"
         android:shadowRadius="5"
         android:layout_below="@+id/imgAdd"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3" />
+        android:layout_centerHorizontal="true" />
 
 
     <TextView
@@ -81,8 +80,8 @@
         android:text="Choose Hood"
         android:textStyle="bold"
         android:layout_below="@+id/buttonDescriptionLayput"
-        android:layout_alignRight="@+id/PostButton"
-        android:layout_alignEnd="@+id/PostButton" />
+        android:layout_toRightOf="@+id/imgAdd2"
+        android:layout_toEndOf="@+id/imgAdd2" />
 
 
     <TextView
@@ -92,9 +91,9 @@
         android:textSize="20dp"
         android:text="Add Pictures"
         android:textStyle="bold"
-        android:layout_below="@+id/chk_myHood"
-        android:layout_alignRight="@+id/PostButton"
-        android:layout_alignEnd="@+id/PostButton" />
+        android:layout_below="@+id/radioType"
+        android:layout_toRightOf="@+id/chk_myHood"
+        android:layout_toEndOf="@+id/chk_myHood" />
 
     <CheckBox
         android:id="@+id/chk_myHood"
@@ -135,9 +134,9 @@
         android:layout_height="90dp"
         android:src="@drawable/add_icon"
         android:layout_weight="1"
-        android:layout_below="@+id/txtLabe4"
-        android:layout_alignRight="@+id/chk_myHood"
-        android:layout_alignEnd="@+id/chk_myHood" />
+        android:layout_alignTop="@+id/imgAdd2"
+        android:layout_alignRight="@+id/radioType"
+        android:layout_alignEnd="@+id/radioType" />
 
 
     <ImageView
@@ -146,8 +145,43 @@
         android:layout_height="90dp"
         android:src="@drawable/add_icon"
         android:layout_weight="1"
-        android:layout_above="@+id/PostButton"
-        android:layout_toRightOf="@+id/txtLabe4"
-        android:layout_toEndOf="@+id/txtLabe4" />
+        android:layout_below="@+id/txtLabe4"
+        android:layout_toLeftOf="@+id/txtLabe4"
+        android:layout_toStartOf="@+id/txtLabe4" />
+
+
+    <RadioGroup
+        android:id="@+id/radioType"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:id="@+id/radioOffer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="offer"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/radioWanted"
+            android:layout_marginLeft="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wanted" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Choose Type"
+        android:textStyle="bold"
+        android:layout_below="@+id/chk_myHood"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

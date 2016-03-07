@@ -1,4 +1,4 @@
-package com.example.viktor.myneighbourhood;
+package slidingmenu;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
+import com.example.viktor.myneighbourhood.GetAddressTask;
+import com.example.viktor.myneighbourhood.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;

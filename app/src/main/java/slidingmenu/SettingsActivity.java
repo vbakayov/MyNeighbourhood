@@ -1,4 +1,4 @@
-package com.example.viktor.myneighbourhood;
+package slidingmenu;
 
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.viktor.myneighbourhood.R;
 import com.google.android.gms.maps.SupportMapFragment;
 
 /**

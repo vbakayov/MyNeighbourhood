@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Viktor on 3/1/2016.
+ * A class to store all the post in the app
  */
 public class PostStorage {
 

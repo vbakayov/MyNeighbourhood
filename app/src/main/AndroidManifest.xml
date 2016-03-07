@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="slidingmenu.ProfileFragment"
+            android:name="slidingmenu.ProfileActivity"
             android:label="Profile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
@@ -46,17 +46,17 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".myCurrentLocationActivity"
+            android:name="slidingmenu.myCurrentLocationActivity"
             android:label="@string/title_activity_current_neighbourhood" >
         </activity>
 
         <activity
-            android:name=".MyNeighbourhoodActivity"
+            android:name="slidingmenu.MyNeighbourhoodActivity"
             android:label="@string/title_activity_my_neighbourhood" >
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="slidingmenu.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
 

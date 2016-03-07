@@ -26,7 +26,6 @@ public class InfoFragment extends Fragment {private static final String ARG_POSI
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         position = getArguments().getInt(ARG_POSITION);
     }
 

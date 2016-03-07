@@ -25,9 +25,12 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import adapter.NavDrawerListAdapter;
+import slidingmenu.MyNeighbourhoodActivity;
 import slidingmenu.NavDrawerItem;
-import slidingmenu.AboutFragment;
-import slidingmenu.ProfileFragment;
+import slidingmenu.AboutActivity;
+import slidingmenu.ProfileActivity;
+import slidingmenu.SettingsActivity;
+import slidingmenu.myCurrentLocationActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -256,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         switch (position) {
             case 0:
                 Log.d("TEST","CLicked Postion 0");
-                Intent myIntent = new Intent(this, ProfileFragment.class);
+                Intent myIntent = new Intent(this, ProfileActivity.class);
                 this.startActivity(myIntent);
                 break;
             case 1:
@@ -272,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
                 this.startActivity(myIntent4);
                 break;
             case 4:
-                fragment = new AboutFragment();
+                fragment = new AboutActivity();
                 break;
 
             default:
@@ -323,14 +326,14 @@ public class MainActivity extends AppCompatActivity {
        Profile myProfile=  Profile.getInstance();
         myProfile.setName("Viktor");
         myProfile.setName("4.2");
-        PostStorage.addPost(new Post("Babysitter needed", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner", true, false, "\n" +
-                "611 Maryhill Rd\n" +
-                "Glasgow, Glasgow City G20 7TY", " ", null, null));
-        PostStorage.addPost(new Post("Spanish tutoring ", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner", true, false, "Firhill Ct, Glasgow G20 7BB", " ", null, null));
-        PostStorage.addPost(new Post("Second Year Economics book needed ", "Hi there, I am looking for a book called principles of economics by Greg Mankin", "picturesrc1", "picturesrc2", "owner",true,false,"570 Maryhill Riad, Glasgow", " ", null, null));
-        PostStorage.addPost(new Post("Big Dinner Table Needed", "For my dining room I am looking for a black minimum 6 placed dinner table", "picturesrc1", "picturesrc2", "owner",true,false,"\n" +
-                "84 Murano St\n" +
-                "Glasgow", " ", null, null));
+
+        PostStorage.addPost(new Post("Babysitter needed","offer", "I search for a babysitter during the day between 9 to 5 pm.", "picturesrc1", "picturesrc2", "owner", true, false, "148 Queen Margaret Dr, Glasgow G20 8NY", " ", null, null));
+        PostStorage.addPost(new Post("Spanish tutoring ","offer", "I have a trouble wiht my spanish classes and I am looking for help", "picturesrc1", "picturesrc2", "owner", true, false, "Firhill Ct, Glasgow G20 7BB", " ", null, null));
+        PostStorage.addPost(new Post("Second Year Economics book offer ","needed", "Hi there, I am looking for a book called principles of economics by Greg Mankin", "picturesrc1", "picturesrc2", "owner",true,false,"39 Dalmally St, Glasgow G20 6RN", " ", null, null));
+        PostStorage.addPost(new Post("Big Dinner Table Needed","offer", "For my dining room I am looking for a black minimum 6 placed dinner table", "picturesrc1", "picturesrc2", "owner", true, false, "671 Garscube Rd, Glasgow G20 7JX", "  ", null, null));
+        PostStorage.addPost(new Post("Great Gig today at Ubiquitous Chip","wanted", "We are having free burgers only today. Come and grab one !", "picturesrc1", "picturesrc2", "owner", true, false, "12 Ashton Ln, Glasgow G12 8SJ", "  ", null, null));
+        PostStorage.addPost(new Post("Free meal this week at Casa Russo","wanted", "Rustic Alpine venue with wood paneling and lanterns serving refined French brasserie cuisine. ONLY TODAY", "picturesrc1", "picturesrc2", "owner", true, false, "360 Byres Road, Glasgow G12 8AY", "  ", null, null));
+
         myProfile.setPosts(PostStorage.getInstance().getPosts());
     }
 }

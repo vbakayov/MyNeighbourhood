@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import slidingmenu.myCurrentLocationActivity;
+
 /**
  * Created by Hong Thai
  */
